@@ -44,4 +44,7 @@ public class UserService {
         }
         else return null;
     }
+    public void delete(Integer id){
+        userRepo.deleteById(id);
+    }
 }

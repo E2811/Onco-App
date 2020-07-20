@@ -1,6 +1,5 @@
 package com.ironhack.doctorclient.service;
 
-import com.ironhack.doctorclient.controller.dto.DoctorDto;
 import com.ironhack.doctorclient.enums.Specialty;
 import com.ironhack.doctorclient.exception.IdNotFoundException;
 import com.ironhack.doctorclient.model.Doctor;
@@ -40,7 +39,7 @@ class DoctorServiceTest {
 
     @Test
     void save() {
-        DoctorDto doctor = new DoctorDto("Gema",7, Specialty.PEDIATRICIAN,"gema@gmail.com");
+        Doctor doctor = new Doctor("Gema",7, Specialty.PEDIATRICIAN,"gema@gmail.com");
         assertEquals("Gema", doctorService.save(doctor).getName());
     }
 }

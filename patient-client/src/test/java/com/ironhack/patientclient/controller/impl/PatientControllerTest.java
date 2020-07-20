@@ -2,6 +2,9 @@ package com.ironhack.patientclient.controller.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.ironhack.patientclient.controller.dto.PatientWeight;
+import com.ironhack.patientclient.enums.Sex;
 import com.ironhack.patientclient.model.Patient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,11 +15,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+
 @SpringBootTest
 class PatientControllerTest {
 
@@ -29,12 +33,13 @@ class PatientControllerTest {
 
     @BeforeEach
     void setUp() {
+        objectMapper.registerModule(new JavaTimeModule());
         mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
     }
 
     @Test
     void create() throws Exception {
-        patient = new Patient("Manuel Pérez", "698547148", "manu@gmail.com",41,11,4);
+        patient = new Patient("Manuel Pérez", "698547148", "manu@gmail.com", Sex.M,82, 180,11, LocalDate.of(1965,5,12), 4);
         this.mockMvc.perform(post("/patient/save")
                 .content(objectMapper.writeValueAsString(patient))
                 .contentType(MediaType.APPLICATION_JSON))
@@ -42,7 +47,8 @@ class PatientControllerTest {
     }
     @Test
     void create_isBadRequest() throws Exception {
-        patient = new Patient("Manuel Pérez", "698", "manu@gmail.com",41,11,4);
+        patient = new Patient("Manuel Pérez", "698547148", "manu@gmail.com",Sex.M, 82, 180,11, LocalDate.of(1965,5,12), 4);
+        patient.setEmail("hola");
         this.mockMvc.perform(post("/patient/save")
                 .content(objectMapper.writeValueAsString(patient))
                 .contentType(MediaType.APPLICATION_JSON))
@@ -75,6 +81,15 @@ class PatientControllerTest {
     @Test
     void deletePatient() throws Exception {
         this.mockMvc.perform(delete("/patient/4"))
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    void update() throws Exception {
+        PatientWeight patientWeight = new PatientWeight(1, 55);
+        this.mockMvc.perform(put("/patient")
+                .content(objectMapper.writeValueAsString(patientWeight))
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent());
     }
 }

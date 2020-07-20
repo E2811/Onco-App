@@ -1,6 +1,7 @@
 package com.ironhack.patientclient.service;
 
 import com.google.inject.internal.asm.$TypePath;
+import com.ironhack.patientclient.controller.dto.PatientWeight;
 import com.ironhack.patientclient.exception.IdNotFoundException;
 import com.ironhack.patientclient.model.Patient;
 import com.ironhack.patientclient.repository.PatientRepository;
@@ -32,5 +33,11 @@ public class PatientService {
 
     public void delete(Integer id){
         patientRepository.deleteById(id);
+    }
+
+    public void update(PatientWeight patientWeight){
+        Patient patient = patientRepository.findById(patientWeight.getId()).orElseThrow(()-> new IdNotFoundException("Patient with id "+patientWeight.getId()+" nnot found"));
+        patient.setWeight(patientWeight.getWeight());
+        patientRepository.save(patient);
     }
 }

@@ -1,5 +1,6 @@
 package com.ironhack.patientclient.controller.impl;
 
+import com.ironhack.patientclient.controller.dto.PatientWeight;
 import com.ironhack.patientclient.model.Patient;
 import com.ironhack.patientclient.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,11 @@ public class PatientController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer id){
         patientService.delete(id);
+    }
+
+    @PutMapping("/patient")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update(@RequestBody @Valid PatientWeight patientWeight){
+        patientService.update(patientWeight);
     }
 }

@@ -1,6 +1,5 @@
 package com.ironhack.doctorclient.controller.impl;
 
-import com.ironhack.doctorclient.controller.dto.DoctorDto;
 import com.ironhack.doctorclient.model.Doctor;
 import com.ironhack.doctorclient.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,8 @@ public class DoctorController {
 
     @PostMapping("/doctor/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Doctor create(@RequestBody @Valid DoctorDto doctorDto) {
-        return doctorService.save(doctorDto);
+    public Doctor create(@RequestBody @Valid Doctor doctor) {
+        return doctorService.save(doctor);
     }
 
     @GetMapping("/doctors")

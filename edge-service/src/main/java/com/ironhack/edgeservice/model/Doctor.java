@@ -1,14 +1,14 @@
-package com.ironhack.doctorclient.controller.dto;
+package com.ironhack.edgeservice.model;
 
-import com.ironhack.doctorclient.enums.Specialty;
+import com.ironhack.edgeservice.enums.Specialty;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-public class DoctorDto {
+public class Doctor {
+
+    private Integer id;
 
     @NotNull
     @NotEmpty(message="Name is empty")
@@ -17,19 +17,27 @@ public class DoctorDto {
     @NotNull
     private Integer userID;
 
-    @Enumerated(EnumType.STRING)
     private Specialty specialty;
-    @Email(message = "Email format invalid")
+    @NotNull
+    @Email(message = "Email invalid")
     private String email;
 
-    public DoctorDto() {
+    public Doctor() {
     }
 
-    public DoctorDto(@NotNull @NotEmpty(message = "Name is empty") String name, @NotNull Integer userID, Specialty specialty, @Email(message = "Email format invalid") String email) {
+    public Doctor(@NotNull @NotEmpty(message = "Name is empty") String name, @NotNull Integer userID, Specialty specialty, @Email String email) {
         this.name = name;
         this.userID = userID;
         this.specialty = specialty;
         this.email = email;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

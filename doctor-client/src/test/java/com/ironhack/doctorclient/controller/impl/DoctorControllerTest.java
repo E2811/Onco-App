@@ -2,7 +2,6 @@ package com.ironhack.doctorclient.controller.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ironhack.doctorclient.controller.dto.DoctorDto;
 import com.ironhack.doctorclient.enums.Specialty;
 import com.ironhack.doctorclient.model.Doctor;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,12 +25,12 @@ class DoctorControllerTest {
 
     private MockMvc mockMvc;
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private DoctorDto doctor;
+    private Doctor doctor;
 
     @BeforeEach
     void setUp() {
         mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
-        doctor = new DoctorDto("Gema",7, Specialty.PEDIATRICIAN,"gema@gmail.com");
+        doctor = new Doctor("Gema",7, Specialty.PEDIATRICIAN,"gema@gmail.com");
     }
 
     @Test
