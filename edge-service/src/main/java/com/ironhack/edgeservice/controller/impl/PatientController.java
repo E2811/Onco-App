@@ -49,7 +49,7 @@ public class PatientController {
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_DOCTOR') or hasRole('ROLE_PATIENT')")
     @PutMapping("")
     @ApiOperation(value = "update the weight of a patient")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@RequestBody @Valid PatientWeight patientWeight) {
         patientService.update(patientWeight);
     }

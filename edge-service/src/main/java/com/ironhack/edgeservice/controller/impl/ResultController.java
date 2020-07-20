@@ -1,8 +1,5 @@
 package com.ironhack.edgeservice.controller.impl;
 
-import com.ironhack.edgeservice.controller.dto.PatientDto;
-import com.ironhack.edgeservice.controller.dto.PatientMV;
-import com.ironhack.edgeservice.controller.dto.ResultDto;
 import com.ironhack.edgeservice.model.Result;
 import com.ironhack.edgeservice.service.ResultService;
 import io.swagger.annotations.ApiOperation;
@@ -19,12 +16,12 @@ public class ResultController {
     @Autowired
     private ResultService resultService;
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_DOCTOR') or hasRole('ROLE_PATIENT')")
-    @PostMapping("/save")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_DOCTOR') ")
+    @PostMapping("/save/{evaluationId}")
     @ApiOperation(value = "Create result")
     @ResponseStatus(HttpStatus.CREATED)
-    public Result createPatient(@Validated @RequestBody ResultDto resultDto) {
-        return resultService.create(resultDto);
+    public Result createPatient(@PathVariable Integer evaluationId) {
+        return resultService.create(evaluationId);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_DOCTOR') or hasRole('ROLE_PATIENT')")

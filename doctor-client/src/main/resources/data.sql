@@ -4,5 +4,3 @@ insert into doctor (name, userID, email, specialty) values
 ('Alvaro Fragoso', 4,'alvaroFrago@gmail.com','HAEMATOLOGIST'),
 ('Evelyn Flores', 5, 'evelynFlores@gmail.com','GYNECOLOGY'),
 ('George Yoo', 6, 'georgeyoo@gmail.com','ORTHOPEDIST');
-
-

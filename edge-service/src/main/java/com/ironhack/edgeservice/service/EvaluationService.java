@@ -59,9 +59,17 @@ public class EvaluationService {
         throw new NullPointerException("Evaluation service is down. Try again Later");
     }
 
-    @HystrixCommand(fallbackMethod = "findByIdFake")
+    @HystrixCommand(fallbackMethod = "findByIdFake", ignoreExceptions = FeignBadResponseWrapper.class)
     public PatientEvaluation findById(Integer id){
-        return evaluationClient.findById(id);
+        PatientEvaluation patientEvaluation = null;
+        try {
+            patientEvaluation = evaluationClient.findById(id);
+        }catch (HystrixBadRequestException e) {
+            if (e instanceof FeignBadResponseWrapper) {
+                throw new FeignBadResponseWrapper(((FeignBadResponseWrapper) e).getStatus(), ((FeignBadResponseWrapper) e).getHeaders(), ((FeignBadResponseWrapper) e).getBody());
+            }
+        }
+        return patientEvaluation;
     }
 
     public PatientEvaluation findByIdFake(Integer id){

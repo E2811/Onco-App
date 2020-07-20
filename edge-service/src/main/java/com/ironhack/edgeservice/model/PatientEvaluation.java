@@ -1,11 +1,9 @@
 package com.ironhack.edgeservice.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ironhack.edgeservice.enums.Activity;
 import com.ironhack.edgeservice.enums.Intake;
 import com.ironhack.edgeservice.enums.Symptoms;
-import com.ironhack.edgeservice.enums.Weight;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -14,7 +12,7 @@ public class PatientEvaluation {
 
     private Integer id;
     @NotNull
-    private Weight weight;
+    private double weight;
     @NotNull
     private Intake intake;
     @NotNull
@@ -30,7 +28,7 @@ public class PatientEvaluation {
         this.review = LocalDate.now();
     }
 
-    public PatientEvaluation(Weight weight, Intake intake, Symptoms symptoms, Activity ecog, @NotNull Integer patient) {
+    public PatientEvaluation(double weight, Intake intake, Symptoms symptoms, Activity ecog, @NotNull Integer patient) {
         this.weight = weight;
         this.intake = intake;
         this.symptoms = symptoms;
@@ -55,11 +53,11 @@ public class PatientEvaluation {
         this.id = id;
     }
 
-    public Weight getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(Weight weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 

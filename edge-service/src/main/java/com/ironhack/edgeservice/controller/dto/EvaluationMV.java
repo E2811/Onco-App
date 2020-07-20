@@ -10,7 +10,7 @@ public class EvaluationMV {
 
     private Integer id;
     @NotNull
-    private Weight weight;
+    private double weight;
     @NotNull
     private Intake intake;
     @NotNull
@@ -26,7 +26,7 @@ public class EvaluationMV {
     @NotNull
     private Integer patient;
 
-    public EvaluationMV(Integer id, @NotNull Weight weight, @NotNull Intake intake, @NotNull Symptoms symptoms, @NotNull Activity ecog, Metabolic metabolic, Category category, LocalDate review, @NotNull Integer patient) {
+    public EvaluationMV(Integer id, @NotNull double weight, @NotNull Intake intake, @NotNull Symptoms symptoms, @NotNull Activity ecog, Metabolic metabolic, Category category, LocalDate review, @NotNull Integer patient) {
         this.id = id;
         this.weight = weight;
         this.intake = intake;
@@ -46,11 +46,11 @@ public class EvaluationMV {
         this.id = id;
     }
 
-    public Weight getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(Weight weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 

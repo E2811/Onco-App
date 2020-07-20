@@ -18,8 +18,8 @@ class TreatmentServiceTest {
 
     @Test
     void save() {
-        Treatment treatment =   treatment = new Treatment(Type.INMUNOTHERAPY,50, 2);
-        assertEquals(50.00, treatmentService.save(treatment).getDose());
+        Treatment treatment =   treatment = new Treatment(Type.INMUNOTHERAPY, 2);
+        assertEquals(2, treatmentService.save(treatment).getId());
     }
 
     @Test

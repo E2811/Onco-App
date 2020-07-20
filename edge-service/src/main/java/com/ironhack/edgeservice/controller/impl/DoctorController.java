@@ -3,6 +3,7 @@ package com.ironhack.edgeservice.controller.impl;
 import com.ironhack.edgeservice.controller.dto.DoctorDto;
 import com.ironhack.edgeservice.controller.dto.DoctorMV;
 import com.ironhack.edgeservice.service.DoctorService;
+import com.ironhack.edgeservice.service.StatisticService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +11,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/doctor")
@@ -18,6 +21,8 @@ public class DoctorController {
 
     @Autowired
     private DoctorService doctorService;
+    @Autowired
+    private StatisticService statisticService;
 
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -42,6 +47,14 @@ public class DoctorController {
     @ResponseStatus(HttpStatus.OK)
     public DoctorMV findById(@PathVariable Integer id) {
         return doctorService.findById(id);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_DOCTOR')")
+    @GetMapping("/statistics/{filter}")
+    @ApiOperation(value = "find statistics by filter activity|symptoms|category")
+    @ResponseStatus(HttpStatus.OK)
+    public Map<String,Integer> findByFilter(@PathVariable String filter) {
+        return statisticService.findStatistics(filter);
     }
 
 

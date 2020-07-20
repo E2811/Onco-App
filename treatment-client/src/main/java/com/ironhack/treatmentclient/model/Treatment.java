@@ -17,8 +17,6 @@ public class Treatment {
     private Integer id;
     @Enumerated(EnumType.STRING)
     private Type type;
-    @Min(0)
-    private double dose;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate revisionDate;
     @NotNull(message = "patient null")
@@ -28,9 +26,8 @@ public class Treatment {
         this.revisionDate = LocalDate.now();
     }
 
-    public Treatment(Type type, double dose, Integer patient) {
+    public Treatment(Type type, Integer patient) {
         this.type = type;
-        this.dose = dose;
         this.revisionDate = LocalDate.now();
         this.patient = patient;
     }
@@ -49,14 +46,6 @@ public class Treatment {
 
     public void setType(Type type) {
         this.type = type;
-    }
-
-    public double getDose() {
-        return dose;
-    }
-
-    public void setDose(double dose) {
-        this.dose = dose;
     }
 
     public LocalDate getRevisionDate() {

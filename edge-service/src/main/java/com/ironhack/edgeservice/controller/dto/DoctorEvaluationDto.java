@@ -13,6 +13,12 @@ public class DoctorEvaluationDto {
     @NotNull
     private Integer evaluationId;
 
+    public DoctorEvaluationDto(@NotNull Metabolic metabolic, @NotNull Category category, @NotNull Integer evaluationId) {
+        this.metabolic = metabolic;
+        this.category = category;
+        this.evaluationId = evaluationId;
+    }
+
     public Metabolic getMetabolic() {
         return metabolic;
     }
