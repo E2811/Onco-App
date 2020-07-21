@@ -20,7 +20,7 @@ public class ResultController {
     @PostMapping("/save/{evaluationId}")
     @ApiOperation(value = "Create result")
     @ResponseStatus(HttpStatus.CREATED)
-    public Result createPatient(@PathVariable Integer evaluationId) {
+    public Result createResult(@PathVariable Integer evaluationId) {
         return resultService.create(evaluationId);
     }
 

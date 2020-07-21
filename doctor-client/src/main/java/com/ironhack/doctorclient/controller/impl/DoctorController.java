@@ -16,7 +16,6 @@ public class DoctorController {
     @Autowired
     private DoctorService doctorService;
 
-
     @PostMapping("/doctor/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Doctor create(@RequestBody @Valid Doctor doctor) {
@@ -33,5 +32,11 @@ public class DoctorController {
     @ResponseStatus(HttpStatus.OK)
     public Doctor findById(@PathVariable Integer id) {
         return doctorService.findById(id);
+    }
+
+    @GetMapping("/doctor/by_user_id/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Doctor findByUser(@PathVariable Integer id) {
+        return doctorService.findByUser(id);
     }
 }

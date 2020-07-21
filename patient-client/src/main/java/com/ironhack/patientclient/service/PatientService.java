@@ -27,6 +27,10 @@ public class PatientService {
         return patientRepository.findById(id).orElseThrow(()-> new IdNotFoundException("Patient with id "+id+" nnot found"));
     }
 
+    public Patient findByUserId(Integer id){
+        return patientRepository.findByUserID(id);
+    }
+
     public Patient create(Patient patient){
         return patientRepository.save(patient);
     }

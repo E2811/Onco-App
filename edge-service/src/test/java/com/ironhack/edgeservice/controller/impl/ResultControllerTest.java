@@ -3,6 +3,7 @@ package com.ironhack.edgeservice.controller.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.ironhack.edgeservice.service.EvaluationService;
+import com.ironhack.edgeservice.service.ResultService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,8 @@ class ResultControllerTest {
     @Autowired
     private WebApplicationContext webApplicationContext;
     @MockBean
-    private EvaluationService evaluationService;
+    private ResultService resultService;
     private MockMvc mockMvc;
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @BeforeEach
     void setUp() {

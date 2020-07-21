@@ -36,7 +36,7 @@ class TreatmentControllerTest {
     void setUp() {
         objectMapper.registerModule(new JavaTimeModule());
         mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
-        treatment = new Treatment(Type.INMUNOTHERAPY, 1);
+        treatment = new Treatment(Type.INMUNOTHERAPY,LocalDate.now(), 1);
     }
 
     @Test

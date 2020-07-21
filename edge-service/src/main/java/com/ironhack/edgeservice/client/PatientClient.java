@@ -29,4 +29,8 @@ public interface PatientClient {
 
     @PutMapping("/patient")
     public void update(@RequestBody @Valid PatientWeight patientWeight);
+
+    @GetMapping("/patient/find_by_user/{id}")
+    public Patient findByUserId(@PathVariable Integer id);
+
 }

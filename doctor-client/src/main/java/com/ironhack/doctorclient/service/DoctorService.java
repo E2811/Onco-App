@@ -23,6 +23,11 @@ public class DoctorService {
         return doctorRepository.findById(id).orElseThrow(()-> new IdNotFoundException("Doctor with id "+ id +" not found."));
     }
 
+    public Doctor findByUser(Integer id){
+        LOGGER.info("[INIT] find doctors by user id");
+        return doctorRepository.findByUserID(id);
+    }
+
     public List<Doctor> findAll(){
         LOGGER.info("[INIT] find all doctors");
         return doctorRepository.findAll();

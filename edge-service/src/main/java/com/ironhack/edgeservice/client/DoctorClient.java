@@ -18,4 +18,7 @@ public interface DoctorClient {
 
     @GetMapping("/doctor/{id}")
     public Doctor findById(@PathVariable Integer id);
+
+    @GetMapping("/doctor/by_user_id/{id}")
+    public Doctor findByUser(@PathVariable Integer id);
 }

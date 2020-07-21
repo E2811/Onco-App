@@ -38,12 +38,28 @@ public class PatientController {
         return patientService.findAll();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_DOCTOR')")
+    @GetMapping("/find_by_doctor/{id}")
+    @ApiOperation(value = "Find all patients by doctor")
+    @ResponseStatus(HttpStatus.OK)
+    public List<PatientMV> findByDoctor(@PathVariable Integer id) {
+        return patientService.findAllByDoctor(id);
+    }
+
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_DOCTOR') or hasRole('ROLE_PATIENT')")
     @GetMapping("/find_by_id/{id}")
     @ApiOperation(value = "find a patient by its id")
     @ResponseStatus(HttpStatus.OK)
     public PatientMV findById(@PathVariable Integer id) {
         return patientService.findById(id);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_DOCTOR') or hasRole('ROLE_PATIENT')")
+    @GetMapping("/find_by_username/{name}")
+    @ApiOperation(value = "find a patient by its username")
+    @ResponseStatus(HttpStatus.OK)
+    public PatientMV findByUsername(@PathVariable String name) {
+        return patientService.findByUsername(name);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_DOCTOR') or hasRole('ROLE_PATIENT')")

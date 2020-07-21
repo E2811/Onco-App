@@ -2,6 +2,8 @@ package com.ironhack.edgeservice.service;
 
 import com.ironhack.edgeservice.controller.dto.EvaluationMV;
 import com.ironhack.edgeservice.model.Patient;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,10 @@ public class StatisticService {
     @Autowired
     private EvaluationService evaluationService;
 
+    private static final Logger LOGGER = LogManager.getLogger(StatisticService.class);
+
     public Map<String, Integer> findStatistics(String filter){
+        LOGGER.info("[INIT] findStatistics");
         switch (filter.toLowerCase().trim()){
             case "category":
                 return findPatientsCategory();
@@ -31,6 +36,7 @@ public class StatisticService {
     }
 
     public Map<String, Integer> findPatientsCategory(){
+        LOGGER.info("[INIT] findPatientsByCategory");
         Map<String, Integer> number = new HashMap<>();
         patientService.findAll().forEach(patientMV -> {
             evaluationService.findCompleteEval(patientMV.getId()).forEach(evaluationMV1 -> {
@@ -43,10 +49,12 @@ public class StatisticService {
                 }
             });
         });
+        LOGGER.info("[EXIT] findPatientsByCategory");
         return number;
     }
 
     public Map<String, Integer> findPatientsSymptoms(){
+        LOGGER.info("[INIT] findPatientsBySymptoms");
         Map<String, Integer> number = new HashMap<>();
         patientService.findAll().forEach(patientMV -> {
             evaluationService.findCompleteEval(patientMV.getId()).forEach(evaluationMV1 -> {
@@ -59,10 +67,12 @@ public class StatisticService {
                 }
             });
         });
+        LOGGER.info("[EXIT] findPatientsBySymptoms");
         return number;
     }
 
     public Map<String, Integer> findPatientsActivity(){
+        LOGGER.info("[INIT] findPatientsByActivity");
         Map<String, Integer> number = new HashMap<>();
         patientService.findAll().forEach(patientMV -> {
             evaluationService.findCompleteEval(patientMV.getId()).forEach(evaluationMV1 -> {
@@ -75,6 +85,7 @@ public class StatisticService {
                 }
             });
         });
+        LOGGER.info("[EXIT] findPatientsByActivity");
         return number;
     }
 }

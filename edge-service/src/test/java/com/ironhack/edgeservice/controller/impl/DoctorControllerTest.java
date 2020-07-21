@@ -7,6 +7,7 @@ import com.ironhack.edgeservice.controller.dto.DoctorMV;
 import com.ironhack.edgeservice.enums.Specialty;
 import com.ironhack.edgeservice.model.Doctor;
 import com.ironhack.edgeservice.service.DoctorService;
+import com.ironhack.edgeservice.service.StatisticService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,8 @@ class DoctorControllerTest {
     private WebApplicationContext webApplicationContext;
     @MockBean
     private DoctorService doctorService;
+    @MockBean
+    private StatisticService statisticService;
 
     private MockMvc mockMvc;
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -72,6 +75,13 @@ class DoctorControllerTest {
     @WithMockUser(username = "admin",roles = "ADMIN")
     void findById() throws Exception {
         this.mockMvc.perform(get("/doctor/find_by_id/1"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @WithMockUser(username = "admin",roles = "ADMIN")
+    void findStatistics() throws Exception {
+        this.mockMvc.perform(get("/doctor/statistics/activity"))
                 .andExpect(status().isOk());
     }
 }

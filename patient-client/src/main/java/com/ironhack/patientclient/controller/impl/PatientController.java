@@ -27,6 +27,13 @@ public class PatientController {
     public Patient findById(@PathVariable Integer id){
         return patientService.findById(id);
     }
+
+    @GetMapping("/patient/find_by_user/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Patient findByUserId(@PathVariable Integer id){
+        return patientService.findByUserId(id);
+    }
+
     @GetMapping("/patient/by-doctor/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<Patient> findByDoctor(@PathVariable Integer id){

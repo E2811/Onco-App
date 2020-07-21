@@ -29,7 +29,7 @@ public class TreatmentController {
 
     @GetMapping("/treatment/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Treatment findById(@PathVariable Integer id) {
+    public Treatment findById(@PathVariable String id) {
         return treatmentService.findById(id);
     }
 

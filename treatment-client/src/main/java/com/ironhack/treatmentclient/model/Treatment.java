@@ -3,19 +3,19 @@ package com.ironhack.treatmentclient.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ironhack.treatmentclient.enums.Type;
 import jdk.jfr.Name;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-@Entity
+@Document
 public class Treatment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @Enumerated(EnumType.STRING)
+    private String id;
     private Type type;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate revisionDate;
@@ -23,20 +23,19 @@ public class Treatment {
     private Integer patient;
 
     public Treatment() {
-        this.revisionDate = LocalDate.now();
     }
 
-    public Treatment(Type type, Integer patient) {
+    public Treatment(Type type, LocalDate revisionDate, Integer patient) {
         this.type = type;
-        this.revisionDate = LocalDate.now();
+        this.revisionDate = revisionDate;
         this.patient = patient;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

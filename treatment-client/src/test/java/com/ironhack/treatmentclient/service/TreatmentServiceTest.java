@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Transactional
@@ -18,7 +20,7 @@ class TreatmentServiceTest {
 
     @Test
     void save() {
-        Treatment treatment =   treatment = new Treatment(Type.INMUNOTHERAPY, 2);
+        Treatment treatment =   treatment = new Treatment(Type.INMUNOTHERAPY, LocalDate.now(),2);
         assertEquals(2, treatmentService.save(treatment).getId());
     }
 
@@ -29,10 +31,10 @@ class TreatmentServiceTest {
 
     @Test
     void findById() {
-        assertEquals(Type.CHEMOTHERAPY, treatmentService.findById(1).getType());
+        assertEquals(Type.CHEMOTHERAPY, treatmentService.findById("1").getType());
     }
     @Test
     void findById_idNotfound() {
-        assertThrows(IdNotFoundException.class, () -> treatmentService.findById(450));
+        assertThrows(IdNotFoundException.class, () -> treatmentService.findById("450"));
     }
 }

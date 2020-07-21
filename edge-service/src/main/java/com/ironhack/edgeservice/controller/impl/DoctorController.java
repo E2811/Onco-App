@@ -2,6 +2,7 @@ package com.ironhack.edgeservice.controller.impl;
 
 import com.ironhack.edgeservice.controller.dto.DoctorDto;
 import com.ironhack.edgeservice.controller.dto.DoctorMV;
+import com.ironhack.edgeservice.controller.dto.PatientMV;
 import com.ironhack.edgeservice.service.DoctorService;
 import com.ironhack.edgeservice.service.StatisticService;
 import io.swagger.annotations.ApiOperation;
@@ -55,6 +56,14 @@ public class DoctorController {
     @ResponseStatus(HttpStatus.OK)
     public Map<String,Integer> findByFilter(@PathVariable String filter) {
         return statisticService.findStatistics(filter);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_DOCTOR')")
+    @GetMapping("/find_by_username/{name}")
+    @ApiOperation(value = "find a doctor by its username")
+    @ResponseStatus(HttpStatus.OK)
+    public DoctorMV findByUsername(@PathVariable String name) {
+        return doctorService.findByUsername(name);
     }
 
 
