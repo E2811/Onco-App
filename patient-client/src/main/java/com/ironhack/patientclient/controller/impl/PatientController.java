@@ -21,7 +21,7 @@ public class PatientController {
     public Patient create(@RequestBody @Valid Patient patient) {
         return patientService.create(patient);
     }
-
+    //bo
     @GetMapping("/patient/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Patient findById(@PathVariable Integer id){
