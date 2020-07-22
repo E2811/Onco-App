@@ -39,7 +39,7 @@ public class StatisticService {
         LOGGER.info("[INIT] findPatientsByCategory");
         Map<String, Integer> number = new HashMap<>();
         patientService.findAll().forEach(patientMV -> {
-            evaluationService.findCompleteEval(patientMV.getId()).forEach(evaluationMV1 -> {
+            evaluationService.findCompleteEval(patientMV.getUsername()).forEach(evaluationMV1 -> {
                 String key = String.valueOf(evaluationMV1.getCategory().getDescription());
                 if (number.containsKey(key)) {
                     int count = number.get(key) + 1;
@@ -57,7 +57,7 @@ public class StatisticService {
         LOGGER.info("[INIT] findPatientsBySymptoms");
         Map<String, Integer> number = new HashMap<>();
         patientService.findAll().forEach(patientMV -> {
-            evaluationService.findCompleteEval(patientMV.getId()).forEach(evaluationMV1 -> {
+            evaluationService.findCompleteEval(patientMV.getUsername()).forEach(evaluationMV1 -> {
                 String key = String.valueOf(evaluationMV1.getSymptoms());
                 if (number.containsKey(key)) {
                     int count = number.get(key) + 1;
@@ -75,7 +75,7 @@ public class StatisticService {
         LOGGER.info("[INIT] findPatientsByActivity");
         Map<String, Integer> number = new HashMap<>();
         patientService.findAll().forEach(patientMV -> {
-            evaluationService.findCompleteEval(patientMV.getId()).forEach(evaluationMV1 -> {
+            evaluationService.findCompleteEval(patientMV.getUsername()).forEach(evaluationMV1 -> {
                 String key = String.valueOf(evaluationMV1.getEcog());
                 if (number.containsKey(key)) {
                     int count = number.get(key) + 1;

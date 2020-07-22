@@ -25,7 +25,11 @@ public class UserController {
         return userService.findById(id);
     }
 
-    
+    @GetMapping("/users")
+    @ResponseStatus(HttpStatus.OK)
+    public List<User> findAll(){
+        return userService.findAll();
+    }
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)

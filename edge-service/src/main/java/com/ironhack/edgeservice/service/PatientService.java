@@ -35,7 +35,7 @@ public class PatientService {
         User user = new User();
         user.setPassword(patientDto.getPassword());
         user.setUsername(patientDto.getUsername());
-        user.setRole(Role.ROLE_DOCTOR);
+        user.setRole(Role.ROLE_PATIENT);
         LOGGER.info("create user patient");
         user = userService.create(user);
         if(user != null) {

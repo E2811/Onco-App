@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-@FeignClient(name = "doctor-client")
+@FeignClient(name = "doctor-client", url = "https://onco-app-doctor-client.herokuapp.com/")
 public interface DoctorClient {
 
     @PostMapping("/doctor/save")

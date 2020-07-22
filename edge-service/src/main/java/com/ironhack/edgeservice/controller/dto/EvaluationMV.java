@@ -25,8 +25,9 @@ public class EvaluationMV {
     private LocalDate review;
     @NotNull
     private Integer patient;
+    private boolean evaluated;
 
-    public EvaluationMV(Integer id, @NotNull double weight, @NotNull Intake intake, @NotNull Symptoms symptoms, @NotNull Activity ecog, Metabolic metabolic, Category category, LocalDate review, @NotNull Integer patient) {
+    public EvaluationMV(Integer id, boolean evaluated, @NotNull double weight, @NotNull Intake intake, @NotNull Symptoms symptoms, @NotNull Activity ecog, Metabolic metabolic, Category category, LocalDate review, @NotNull Integer patient) {
         this.id = id;
         this.weight = weight;
         this.intake = intake;
@@ -36,6 +37,7 @@ public class EvaluationMV {
         this.category = category;
         this.review = review;
         this.patient = patient;
+        this.evaluated = evaluated;
     }
 
     public Integer getId() {
@@ -56,6 +58,14 @@ public class EvaluationMV {
 
     public Intake getIntake() {
         return intake;
+    }
+
+    public boolean isEvaluated() {
+        return evaluated;
+    }
+
+    public void setEvaluated(boolean evaluated) {
+        this.evaluated = evaluated;
     }
 
     public void setIntake(Intake intake) {

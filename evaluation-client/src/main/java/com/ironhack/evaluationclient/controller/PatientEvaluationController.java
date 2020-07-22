@@ -40,4 +40,10 @@ public class PatientEvaluationController {
         patientEvaluationService.delete(id);
     }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update(@PathVariable Integer id){
+        patientEvaluationService.update(id);
+    }
+
 }

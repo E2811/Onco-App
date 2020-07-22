@@ -29,8 +29,10 @@ public class PatientEvaluation {
     private Integer patient;
     @OneToOne(mappedBy = "evalPatient")
     private DoctorEvaluation evaluationDoctor;
+    private boolean evaluated;
 
     public PatientEvaluation() {
+        this.evaluated = false;
         this.review = LocalDate.now();
     }
 
@@ -41,6 +43,7 @@ public class PatientEvaluation {
         this.ecog = ecog;
         this.review = LocalDate.now();
         this.patient = patient;
+        this.evaluated = false;
     }
 
     public LocalDate getReview() {
@@ -49,6 +52,14 @@ public class PatientEvaluation {
     @JsonIgnore
     public DoctorEvaluation getEvaluationDoctor() {
         return evaluationDoctor;
+    }
+
+    public boolean isEvaluated() {
+        return evaluated;
+    }
+
+    public void setEvaluated(boolean evaluated) {
+        this.evaluated = evaluated;
     }
 
     public void setEvaluationDoctor(DoctorEvaluation evaluationDoctor) {

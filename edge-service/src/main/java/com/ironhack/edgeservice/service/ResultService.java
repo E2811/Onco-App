@@ -2,7 +2,9 @@ package com.ironhack.edgeservice.service;
 
 import com.ironhack.edgeservice.client.ResultClient;
 import com.ironhack.edgeservice.config.FeignBadResponseWrapper;
+import com.ironhack.edgeservice.controller.dto.DoctorEvaluationDto;
 import com.ironhack.edgeservice.controller.dto.PatientMV;
+import com.ironhack.edgeservice.controller.dto.PatientWeight;
 import com.ironhack.edgeservice.enums.Sex;
 import com.ironhack.edgeservice.model.DoctorEvaluation;
 import com.ironhack.edgeservice.model.PatientEvaluation;
@@ -49,6 +51,8 @@ public class ResultService {
         }
         Result result = new Result(imc, bodySurface, weightLoss, caloriesNeeded,evaluationId);
         LOGGER.info("[EXIT] create result");
+        patientService.update(new PatientWeight(patient.getId(),evaluation.getWeight()));
+        evaluationService.update(evaluationId);
         return resultClient.create(result);
     }
 

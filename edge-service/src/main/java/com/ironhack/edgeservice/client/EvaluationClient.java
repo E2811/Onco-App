@@ -36,4 +36,7 @@ public interface EvaluationClient {
 
     @DeleteMapping("/doctor-evaluation/{id}")
     public void deleteDoctorEvaluation(@PathVariable Integer id);
+
+    @PutMapping("/{id}")
+    public void update(@PathVariable Integer id);
 }

@@ -42,19 +42,19 @@ public class EvaluationController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_PATIENT') or hasRole('ROLE_DOCTOR')")
-    @GetMapping("/find_by_patient/completed/{id}")
+    @GetMapping("/find_by_patient/completed/{username}")
     @ApiOperation(value = "Find all evaluations by patient")
     @ResponseStatus(HttpStatus.OK)
-    public List<EvaluationMV> findByPatientCompleted(@PathVariable Integer id) {
-        return evaluationService.findCompleteEval(id);
+    public List<EvaluationMV> findByPatientCompleted(@PathVariable String username) {
+        return evaluationService.findCompleteEval(username);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_PATIENT') or hasRole('ROLE_DOCTOR')")
-    @GetMapping("/find_by_patient/{id}")
+    @GetMapping("/find_by_patient/{username}")
     @ApiOperation(value = "Find all evaluations by patient without being completed by the doctor")
     @ResponseStatus(HttpStatus.OK)
-    public List<PatientEvaluation> findByPatient(@PathVariable Integer id) {
-        return evaluationService.findByPatient(id);
+    public List<PatientEvaluation> findByPatient(@PathVariable String username) {
+        return evaluationService.findByPatient(username);
     }
 
 }

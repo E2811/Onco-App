@@ -28,4 +28,10 @@ public class PatientEvaluationService {
     public void delete(Integer id){
         patientEvaluationRepository.deleteById(id);
     }
+
+    public void update(Integer id){
+        PatientEvaluation patientEvaluation = findById(id);
+        patientEvaluation.setEvaluated(true);
+        patientEvaluationRepository.save(patientEvaluation);
+    }
 }

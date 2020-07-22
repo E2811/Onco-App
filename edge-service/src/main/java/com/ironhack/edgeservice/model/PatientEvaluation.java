@@ -23,9 +23,11 @@ public class PatientEvaluation {
     private LocalDate review;
     @NotNull
     private Integer patient;
+    private boolean evaluated;
 
     public PatientEvaluation() {
         this.review = LocalDate.now();
+        this.evaluated = false;
     }
 
     public PatientEvaluation(double weight, Intake intake, Symptoms symptoms, Activity ecog, @NotNull Integer patient) {
@@ -35,6 +37,15 @@ public class PatientEvaluation {
         this.ecog = ecog;
         this.review = LocalDate.now();
         this.patient = patient;
+        this.evaluated = false;
+    }
+
+    public boolean isEvaluated() {
+        return evaluated;
+    }
+
+    public void setEvaluated(boolean evaluated) {
+        this.evaluated = evaluated;
     }
 
     public LocalDate getReview() {

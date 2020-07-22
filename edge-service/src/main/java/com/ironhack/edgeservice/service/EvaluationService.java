@@ -10,6 +10,7 @@ import com.ironhack.edgeservice.model.Patient;
 import com.ironhack.edgeservice.model.PatientEvaluation;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.exception.HystrixBadRequestException;
+import io.swagger.models.auth.In;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,12 +61,13 @@ public class EvaluationService {
     }
 
     @HystrixCommand(fallbackMethod = "findByPatientFake")
-    public List<PatientEvaluation> findByPatient(Integer patientId){
-        LOGGER.info("[INIT] find List of evaluations by patient");
-        return evaluationClient.findByPatient(patientId);
+    public List<PatientEvaluation> findByPatient(String username){
+        LOGGER.info("[INIT] find List of evaluations by patient username");
+        PatientMV patient = patientService.findByUsername(username);
+        return evaluationClient.findByPatient(patient.getId());
     }
 
-    public List<PatientEvaluation> findByPatientFake(Integer patientId){
+    public List<PatientEvaluation> findByPatientFake(String username){
         throw new NullPointerException("Evaluation service is down. Try again Later");
     }
 
@@ -119,20 +121,29 @@ public class EvaluationService {
     }
 
     @HystrixCommand(fallbackMethod = "findCompleteFake")
-    public List<EvaluationMV> findCompleteEval(Integer id){
-        LOGGER.info("[INIT] find complete evaluation by patient id ");
+    public List<EvaluationMV> findCompleteEval(String username){
+        LOGGER.info("[INIT] find complete evaluation by patient username ");
+        PatientMV patient = patientService.findByUsername(username);
         List<EvaluationMV> evaluationMV = new ArrayList<>();
-        evaluationClient.findByPatient(id).forEach(patientEvaluation -> {
+        evaluationClient.findByPatient(patient.getId()).forEach(patientEvaluation -> {
             DoctorEvaluation doctorEvaluation = evaluationClient.findByEvaluation(patientEvaluation.getId());
             if (doctorEvaluation != null){
-                evaluationMV.add(new EvaluationMV(patientEvaluation.getId(), patientEvaluation.getWeight(), patientEvaluation.getIntake(), patientEvaluation.getSymptoms(), patientEvaluation.getEcog(), doctorEvaluation.getMetabolic(), doctorEvaluation.getCategory(), patientEvaluation.getReview(), patientEvaluation.getPatient()));
+                evaluationMV.add(new EvaluationMV(patientEvaluation.getId(), patientEvaluation.isEvaluated(), patientEvaluation.getWeight(), patientEvaluation.getIntake(), patientEvaluation.getSymptoms(), patientEvaluation.getEcog(), doctorEvaluation.getMetabolic(), doctorEvaluation.getCategory(), patientEvaluation.getReview(), patientEvaluation.getPatient()));
             }
         });
-        LOGGER.info("[EXIT] find complete evaluation by patient id ");
+        LOGGER.info("[EXIT] find complete evaluation by patient username ");
         return evaluationMV;
     }
 
-    public List<EvaluationMV> findCompleteFake(Integer id){
+    public List<EvaluationMV> findCompleteFake(String username){
+        throw new NullPointerException("Evaluation service is down. Try again Later");
+    }
+
+    @HystrixCommand(fallbackMethod = "updateFake")
+    public void update(Integer id){
+        evaluationClient.update(id);
+    }
+    public void updateFake(Integer id){
         throw new NullPointerException("Evaluation service is down. Try again Later");
     }
 }

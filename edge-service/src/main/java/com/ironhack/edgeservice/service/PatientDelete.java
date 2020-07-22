@@ -30,8 +30,7 @@ public class PatientDelete {
         LOGGER.info("[INIT] delete patient");
         PatientMV patient = patientService.findById(id);
         User user = userService.findUserByUsername(patient.getUsername());
-        userService.delete(user.getId());
-        evaluationService.findByPatient(patient.getId()).forEach(patientEvaluation -> {
+        evaluationService.findByPatient(patient.getUsername()).forEach(patientEvaluation -> {
             DoctorEvaluation doctorEvaluation = evaluationService.findByPatientEval(patientEvaluation.getId());
             System.out.println(doctorEvaluation);
             if (doctorEvaluation!=null){
@@ -46,6 +45,7 @@ public class PatientDelete {
             LOGGER.info("delete patients evaluation");
             evaluationService.deletePatientEval(patientEvaluation.getId());
         });
+        userService.delete(user.getId());
         patientService.delete(id);
         LOGGER.info("[EXIT] delete patient");
     }
