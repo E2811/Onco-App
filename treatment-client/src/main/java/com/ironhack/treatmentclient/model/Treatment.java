@@ -2,12 +2,8 @@ package com.ironhack.treatmentclient.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ironhack.treatmentclient.enums.Type;
-import jdk.jfr.Name;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
