@@ -33,31 +33,17 @@ public class DoctorEvaluation {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public Metabolic getMetabolic() {
         return metabolic;
-    }
-
-    public void setMetabolic(Metabolic metabolic) {
-        this.metabolic = metabolic;
     }
 
     public Category getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
     @JsonIgnore
     public PatientEvaluation getEvalPatient() {
         return evalPatient;
     }
 
-    public void setEvalPatient(PatientEvaluation evalPatient) {
-        this.evalPatient = evalPatient;
-    }
 }
