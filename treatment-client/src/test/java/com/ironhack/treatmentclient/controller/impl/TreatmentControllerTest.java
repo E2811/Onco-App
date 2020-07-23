@@ -36,7 +36,7 @@ class TreatmentControllerTest {
     void setUp() {
         objectMapper.registerModule(new JavaTimeModule());
         mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
-        treatment = new Treatment(Type.INMUNOTHERAPY,LocalDate.now(), 1);
+        treatment = new Treatment(Type.INMUNOTHERAPY,LocalDate.now(), 2);
     }
 
     @Test
@@ -56,7 +56,12 @@ class TreatmentControllerTest {
 
     @Test
     void findById() throws Exception {
-        this.mockMvc.perform(get("/treatment/1"))
+        this.mockMvc.perform(get("/treatment/5f15ff62ea98b74438da7bcd"))
                 .andExpect(status().isOk());
+    }
+    @Test
+    void findByIdNotFound() throws Exception {
+        this.mockMvc.perform(get("/treatment/23"))
+                .andExpect(status().isNotFound());
     }
 }

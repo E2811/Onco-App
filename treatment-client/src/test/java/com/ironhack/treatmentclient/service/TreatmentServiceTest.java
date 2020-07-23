@@ -12,7 +12,6 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
-@Transactional
 class TreatmentServiceTest {
 
     @Autowired
@@ -21,7 +20,7 @@ class TreatmentServiceTest {
     @Test
     void save() {
         Treatment treatment =   treatment = new Treatment(Type.INMUNOTHERAPY, LocalDate.now(),2);
-        assertEquals(2, treatmentService.save(treatment).getId());
+        assertEquals(2, treatmentService.save(treatment).getPatient());
     }
 
     @Test
@@ -31,7 +30,7 @@ class TreatmentServiceTest {
 
     @Test
     void findById() {
-        assertEquals(Type.CHEMOTHERAPY, treatmentService.findById("1").getType());
+        assertEquals(Type.SURGERY, treatmentService.findById("5f15ff62ea98b74438da7bcd").getType());
     }
     @Test
     void findById_idNotfound() {
