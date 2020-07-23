@@ -80,6 +80,13 @@ class DoctorControllerTest {
 
     @Test
     @WithMockUser(username = "admin",roles = "ADMIN")
+    void findByUser() throws Exception {
+        this.mockMvc.perform(get("/doctor/find_by_username/gemaMontalvo"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @WithMockUser(username = "admin",roles = "ADMIN")
     void findStatistics() throws Exception {
         this.mockMvc.perform(get("/doctor/statistics/activity"))
                 .andExpect(status().isOk());

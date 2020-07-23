@@ -6,12 +6,15 @@ import com.ironhack.edgeservice.config.FeignBadResponseWrapper;
 import com.ironhack.edgeservice.controller.dto.*;
 import com.ironhack.edgeservice.enums.Role;
 import com.ironhack.edgeservice.exception.IdNotFoundException;
+import com.ironhack.edgeservice.exception.UnauthorizedUser;
 import com.ironhack.edgeservice.model.*;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.exception.HystrixBadRequestException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

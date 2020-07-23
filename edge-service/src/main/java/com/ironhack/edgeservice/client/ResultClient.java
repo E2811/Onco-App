@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@FeignClient(name="result-client")
+@FeignClient(name="result-client", url="https://onco-app-result-client.herokuapp.com/")
 public interface ResultClient {
 
     @GetMapping("/result/by-evaluation/{id}")

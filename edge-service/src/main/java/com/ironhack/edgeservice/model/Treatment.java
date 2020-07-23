@@ -2,9 +2,11 @@ package com.ironhack.edgeservice.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ironhack.edgeservice.enums.Type;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Treatment {
 
@@ -12,6 +14,7 @@ public class Treatment {
     private String id;
     @NotNull
     private Type type;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate revisionDate;
     @NotNull(message = "patient null")

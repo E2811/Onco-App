@@ -2,6 +2,7 @@ package com.ironhack.edgeservice.service;
 
 import com.ironhack.edgeservice.client.TreatmentClient;
 import com.ironhack.edgeservice.config.FeignBadResponseWrapper;
+import com.ironhack.edgeservice.controller.dto.TreatmentDto;
 import com.ironhack.edgeservice.model.Treatment;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.exception.HystrixBadRequestException;
@@ -23,14 +24,15 @@ public class TreatmentService {
     private static final Logger LOGGER = LogManager.getLogger(TreatmentService.class);
 
     @HystrixCommand(fallbackMethod = "createFakeTreatment", ignoreExceptions = FeignBadResponseWrapper.class)
-    public Treatment create(Treatment treatment){
+    public Treatment create(TreatmentDto treatmentDto){
         LOGGER.info("[INIT] create new treatment");
-        patientService.findById(treatment.getPatient());
+        patientService.findById(treatmentDto.getPatient());
+        Treatment treatment = new Treatment(treatmentDto.getType(), treatmentDto.getRevisionDate().toLocalDate() , treatmentDto.getPatient());
         LOGGER.info("[EXIT] create new treatment");
         return treatmentClient.create(treatment);
     }
 
-    public Treatment createFakeTreatment(Treatment treatment){
+    public Treatment createFakeTreatment(TreatmentDto treatmentDto){
         throw new NullPointerException("Treatment service is down. Try again Later");
     }
 

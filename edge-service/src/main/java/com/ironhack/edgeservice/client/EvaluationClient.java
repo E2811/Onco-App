@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@FeignClient(name = "evaluation-client")
+@FeignClient(name = "evaluation-client", url = "https://onco-app-evaluation-client.herokuapp.com/")
 public interface EvaluationClient {
 
     @PostMapping("/patient-evaluation/save")

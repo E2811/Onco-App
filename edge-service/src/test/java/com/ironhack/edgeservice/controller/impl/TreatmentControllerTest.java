@@ -3,6 +3,7 @@ package com.ironhack.edgeservice.controller.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.ironhack.edgeservice.controller.dto.TreatmentDto;
 import com.ironhack.edgeservice.enums.Type;
 import com.ironhack.edgeservice.model.Doctor;
 import com.ironhack.edgeservice.model.Treatment;
@@ -20,6 +21,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -36,20 +38,20 @@ class TreatmentControllerTest {
 
     private MockMvc mockMvc;
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private Treatment treatment;
+    private TreatmentDto treatmentDto;
 
     @BeforeEach
     void setUp() {
         objectMapper.registerModule(new JavaTimeModule());
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-        treatment = new Treatment(Type.INMUNOTHERAPY, LocalDate.now(), 1);
+        treatmentDto = new TreatmentDto(Type.INMUNOTHERAPY, LocalDateTime.now(), 1);
     }
 
     @Test
     @WithMockUser(username = "admin",roles = "ADMIN")
     void createTreatment() throws Exception {
         this.mockMvc.perform(post("/treatment/save")
-                .content(objectMapper.writeValueAsString(treatment))
+                .content(objectMapper.writeValueAsString(treatmentDto))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
     }
