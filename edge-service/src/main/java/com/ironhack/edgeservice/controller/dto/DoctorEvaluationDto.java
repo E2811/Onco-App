@@ -23,9 +23,6 @@ public class DoctorEvaluationDto {
         return metabolic;
     }
 
-    public void setMetabolic(Metabolic metabolic) {
-        this.metabolic = metabolic;
-    }
 
     public Category getCategory() {
         return category;
@@ -39,7 +36,4 @@ public class DoctorEvaluationDto {
         return evaluationId;
     }
 
-    public void setEvaluationId(Integer evaluationId) {
-        this.evaluationId = evaluationId;
-    }
 }

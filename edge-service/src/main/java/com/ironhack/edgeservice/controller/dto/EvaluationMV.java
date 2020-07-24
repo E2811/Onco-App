@@ -48,53 +48,17 @@ public class EvaluationMV {
         this.id = id;
     }
 
-    public double getWeight() {
-        return weight;
-    }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public Intake getIntake() {
-        return intake;
-    }
-
-    public boolean isEvaluated() {
-        return evaluated;
-    }
-
-    public void setEvaluated(boolean evaluated) {
-        this.evaluated = evaluated;
-    }
-
-    public void setIntake(Intake intake) {
-        this.intake = intake;
-    }
 
     public Symptoms getSymptoms() {
         return symptoms;
     }
 
-    public void setSymptoms(Symptoms symptoms) {
-        this.symptoms = symptoms;
-    }
 
     public Activity getEcog() {
         return ecog;
     }
 
-    public void setEcog(Activity ecog) {
-        this.ecog = ecog;
-    }
-
-    public Metabolic getMetabolic() {
-        return metabolic;
-    }
-
-    public void setMetabolic(Metabolic metabolic) {
-        this.metabolic = metabolic;
-    }
 
     public Category getCategory() {
         return category;
@@ -104,13 +68,6 @@ public class EvaluationMV {
         this.category = category;
     }
 
-    public LocalDate getReview() {
-        return review;
-    }
-
-    public void setReview(LocalDate review) {
-        this.review = review;
-    }
 
     public Integer getPatient() {
         return patient;

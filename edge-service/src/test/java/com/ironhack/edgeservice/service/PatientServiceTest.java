@@ -1,6 +1,7 @@
 package com.ironhack.edgeservice.service;
 
 import com.ironhack.edgeservice.client.PatientClient;
+import com.ironhack.edgeservice.config.FeignBadResponseWrapper;
 import com.ironhack.edgeservice.controller.dto.PatientDto;
 import com.ironhack.edgeservice.controller.dto.PatientMV;
 import com.ironhack.edgeservice.controller.dto.PatientWeight;
@@ -53,6 +54,7 @@ class PatientServiceTest {
         when(patientClient.create(Mockito.any(Patient.class))).thenAnswer(i -> i.getArguments()[0]);
         when(userService.create(Mockito.any(User.class))).thenReturn(user);
         doNothing().when(patientClient).delete(1);
+        when(patientClient.findById(36)).thenThrow(FeignBadResponseWrapper.class);
         doNothing().when(patientClient).update(new PatientWeight(3,60));
     }
 
@@ -65,6 +67,11 @@ class PatientServiceTest {
     void createFakePatient() {
         assertThrows(NullPointerException.class, ()-> patientService.createFakePatient(patientDto));
     }
+    @Test
+    void findByIDFeign() {
+        assertThrows(FeignBadResponseWrapper.class, ()-> patientService.findById(36));
+    }
+
 
     @Test
     void findById() {

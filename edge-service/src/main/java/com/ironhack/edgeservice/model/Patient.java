@@ -50,9 +50,6 @@ public class Patient {
         return weight;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
 
     public double getHeight() {
         return height;
@@ -66,16 +63,8 @@ public class Patient {
         this.sex = sex;
     }
 
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
     public LocalDate getBirthday() {
         return birthday;
-    }
-
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
     }
 
     public Integer getId() {
@@ -98,25 +87,14 @@ public class Patient {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
 
     public Integer getUserID() {
         return userID;
-    }
-
-    public void setUserID(Integer userID) {
-        this.userID = userID;
     }
 
     public Integer getDoctor() {

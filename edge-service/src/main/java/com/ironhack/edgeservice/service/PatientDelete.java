@@ -32,7 +32,6 @@ public class PatientDelete {
         User user = userService.findUserByUsername(patient.getUsername());
         evaluationService.findByPatient(patient.getUsername()).forEach(patientEvaluation -> {
             DoctorEvaluation doctorEvaluation = evaluationService.findByPatientEval(patientEvaluation.getId());
-            System.out.println(doctorEvaluation);
             if (doctorEvaluation!=null){
                 LOGGER.info("delete doctor evaluation");
                 evaluationService.deleteDoctorEval(doctorEvaluation.getId());

@@ -20,9 +20,6 @@ public class Treatment {
     @NotNull(message = "patient null")
     private Integer patient;
 
-    public Treatment() {
-    }
-
     public Treatment(Type type, LocalDate revisionDate, Integer patient) {
         this.type = type;
         this.revisionDate = revisionDate;
@@ -41,17 +38,6 @@ public class Treatment {
         return type;
     }
 
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public LocalDate getRevisionDate() {
-        return revisionDate;
-    }
-
-    public void setRevisionDate(LocalDate revisionDate) {
-        this.revisionDate = revisionDate;
-    }
 
     public Integer getPatient() {
         return patient;

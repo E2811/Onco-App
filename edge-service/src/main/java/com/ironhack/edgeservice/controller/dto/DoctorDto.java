@@ -14,6 +14,7 @@ public class DoctorDto {
 
     @NotNull
     private Specialty specialty;
+    @NotNull
     @Email(message = "Email format invalid")
     private String email;
     @NotNull

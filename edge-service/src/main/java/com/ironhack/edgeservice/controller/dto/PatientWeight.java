@@ -27,7 +27,4 @@ public class PatientWeight {
         return weight;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
 }

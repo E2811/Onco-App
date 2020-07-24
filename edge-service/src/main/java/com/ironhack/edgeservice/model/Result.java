@@ -14,9 +14,6 @@ public class Result {
     private double caloriesNeeded;
     private Integer evaluation;
 
-    public Result() {
-    }
-
     public Result(@Min(0) double IMC, @Min(0) double bodySurface, double weightLoss, @Min(0) double caloriesNeeded, Integer evaluation) {
         this.IMC = IMC;
         this.bodySurface = bodySurface;
@@ -33,43 +30,19 @@ public class Result {
         this.id = id;
     }
 
-    public double getIMC() {
-        return IMC;
-    }
-
-    public void setIMC(double IMC) {
-        this.IMC = IMC;
-    }
 
     public double getBodySurface() {
         return bodySurface;
     }
 
-    public void setBodySurface(double bodySurface) {
-        this.bodySurface = bodySurface;
-    }
 
     public double getWeightLoss() {
         return weightLoss;
     }
 
-    public void setWeightLoss(double weightLoss) {
-        this.weightLoss = weightLoss;
-    }
 
     public double getCaloriesNeeded() {
         return caloriesNeeded;
     }
 
-    public void setCaloriesNeeded(double caloriesNeeded) {
-        this.caloriesNeeded = caloriesNeeded;
-    }
-
-    public Integer getEvaluation() {
-        return evaluation;
-    }
-
-    public void setEvaluation(Integer evaluation) {
-        this.evaluation = evaluation;
-    }
 }

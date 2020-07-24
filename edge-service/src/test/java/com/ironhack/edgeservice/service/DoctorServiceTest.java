@@ -44,7 +44,9 @@ class DoctorServiceTest {
         doctorDto = new DoctorDto("Gema Montalvo",  Specialty.PEDIATRICIAN, "gema@gmail.com", "gemaMontalvo", "blueWater");
         doctorMV = new DoctorMV(doctor.getId(),"Gema Montalvo", Specialty.PEDIATRICIAN, "gema@gmail.com" , "gemaMontalvo");
         when(doctorClient.findById(1)).thenReturn(doctor);
+        when(doctorClient.findByUser(1)).thenReturn(doctor);
         when(userService.findUserById(1)).thenReturn(user);
+        when(userService.findUserByUsername("gemaMontalvo")).thenReturn(user);
         when(doctorClient.findAll()).thenReturn(Arrays.asList(doctor));
         when(doctorClient.create(Mockito.any(Doctor.class))).thenAnswer(i -> i.getArguments()[0]);
         when(userService.create(Mockito.any(User.class))).thenReturn(user);
@@ -65,6 +67,10 @@ class DoctorServiceTest {
     void findById() {
         assertEquals("Gema Montalvo", doctorService.findById(1).getName());
     }
+    @Test
+    void findByUsername() {
+        assertEquals("Gema Montalvo", doctorService.findByUsername("gemaMontalvo").getName());
+    }
 
     @Test
     void findFakeDoctor() {
@@ -79,5 +85,10 @@ class DoctorServiceTest {
     @Test
     void findAllFake() {
         assertThrows(NullPointerException.class, ()-> doctorService.findAllFake());
+    }
+
+    @Test
+    void findFakeDoctorUsername() {
+        assertThrows(NullPointerException.class, ()-> doctorService.findFakeDoctorUser("pepito"));
     }
 }

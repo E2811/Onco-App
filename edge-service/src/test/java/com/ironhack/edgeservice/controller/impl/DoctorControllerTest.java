@@ -66,10 +66,24 @@ class DoctorControllerTest {
 
     @Test
     @WithMockUser(username = "admin",roles = "ADMIN")
+    void createDoctor_badRequest() throws Exception {
+        doctorDto.setEmail("");
+        doctorDto.setName("");
+        this.mockMvc.perform(post("/doctor/save")
+                .content(objectMapper.writeValueAsString(doctorDto))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+
+    @Test
+    @WithMockUser(username = "admin",roles = "ADMIN")
     void findAllDoctors() throws Exception {
         this.mockMvc.perform(get("/doctor/findAll"))
                 .andExpect(status().isOk());
     }
+
+
 
     @Test
     @WithMockUser(username = "admin",roles = "ADMIN")

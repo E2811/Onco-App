@@ -27,16 +27,8 @@ public class TreatmentDto {
         return type;
     }
 
-    public void setType(Type type) {
-        this.type = type;
-    }
-
     public LocalDateTime getRevisionDate() {
         return revisionDate;
-    }
-
-    public void setRevisionDate(LocalDateTime revisionDate) {
-        this.revisionDate = revisionDate;
     }
 
     public Integer getPatient() {

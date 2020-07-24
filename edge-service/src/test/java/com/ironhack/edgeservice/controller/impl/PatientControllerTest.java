@@ -78,7 +78,6 @@ class PatientControllerTest {
                 .andExpect(status().isCreated());
     }
 
-
     @Test
     @WithMockUser(username = "admin",roles = "ADMIN")
     void findAllPatients() throws Exception {

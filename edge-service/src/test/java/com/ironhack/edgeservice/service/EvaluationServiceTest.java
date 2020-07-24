@@ -59,7 +59,7 @@ class EvaluationServiceTest {
 
     @Test
     void create() {
-        assertEquals(Symptoms.MOUTH_SORES, evaluationClient.create(patientEvaluation).getSymptoms());
+        assertEquals(Symptoms.MOUTH_SORES, evaluationService.create(patientEvaluation).getSymptoms());
     }
 
     @Test
@@ -69,7 +69,7 @@ class EvaluationServiceTest {
 
     @Test
     void createDoctorEval() {
-        assertEquals(Metabolic.MODERATE, evaluationClient.createDoctorEval(doctorEvaluationDto).getMetabolic());
+        assertEquals(Metabolic.MODERATE, evaluationService.createDoctorEval(doctorEvaluationDto).getMetabolic());
     }
 
     @Test
@@ -89,7 +89,7 @@ class EvaluationServiceTest {
 
     @Test
     void findById() {
-        assertEquals(Symptoms.MOUTH_SORES, evaluationClient.findById(1).getSymptoms());
+        assertEquals(Symptoms.MOUTH_SORES, evaluationService.findById(1).getSymptoms());
     }
 
     @Test
@@ -99,7 +99,7 @@ class EvaluationServiceTest {
 
     @Test
     void findByPatientEval() {
-        assertEquals(Metabolic.MODERATE, evaluationClient.findByEvaluation(1).getMetabolic());
+        assertEquals(Metabolic.MODERATE, evaluationService.findByPatientEval(1).getMetabolic());
     }
 
     @Test
@@ -109,7 +109,7 @@ class EvaluationServiceTest {
 
     @Test
     void deleteDoctorEval() {
-        evaluationClient.deleteDoctorEvaluation(1);
+        evaluationService.deleteDoctorEval(1);
     }
 
     @Test
@@ -119,7 +119,7 @@ class EvaluationServiceTest {
 
     @Test
     void deletePatientEval() {
-        evaluationClient.delete(1);
+        evaluationService.deletePatientEval(1);;
     }
 
     @Test
@@ -139,7 +139,7 @@ class EvaluationServiceTest {
 
     @Test
     void update() {
-        evaluationClient.update(1);
+        evaluationService.update(1);
     }
 
     @Test

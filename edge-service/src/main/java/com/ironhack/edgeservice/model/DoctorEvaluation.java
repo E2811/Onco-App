@@ -14,9 +14,6 @@ public class DoctorEvaluation {
     private Category category;
     private PatientEvaluation evalPatient;
 
-    public DoctorEvaluation() {
-    }
-
     public DoctorEvaluation(Metabolic metabolic, Category category, PatientEvaluation evalPatient) {
         this.metabolic = metabolic;
         this.category = category;
@@ -35,10 +32,6 @@ public class DoctorEvaluation {
         return metabolic;
     }
 
-    public void setMetabolic(Metabolic metabolic) {
-        this.metabolic = metabolic;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -49,9 +42,5 @@ public class DoctorEvaluation {
 
     public PatientEvaluation getEvalPatient() {
         return evalPatient;
-    }
-
-    public void setEvalPatient(PatientEvaluation evalPatient) {
-        this.evalPatient = evalPatient;
     }
 }

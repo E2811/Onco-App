@@ -46,7 +46,7 @@ class TreatmentServiceTest {
 
     @Test
     void create() {
-        assertEquals(Type.INMUNOTHERAPY, treatmentClient.create(treatment).getType());
+        assertEquals(Type.INMUNOTHERAPY, treatmentService.create(treatmentDto).getType());
     }
 
     @Test

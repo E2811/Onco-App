@@ -58,9 +58,6 @@ public class PatientDto {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     public String getEmail() {
         return email;
@@ -82,25 +79,16 @@ public class PatientDto {
         return weight;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
 
     public double getHeight() {
         return height;
     }
 
-    public void setHeight(double height) {
-        this.height = height;
-    }
 
     public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
-    }
 
     public Integer getDoctor() {
         return doctor;
@@ -122,7 +110,4 @@ public class PatientDto {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
