@@ -27,13 +27,5 @@ class TreatmentServiceTest {
     void findByPatient() {
         assertEquals(2, treatmentService.findByPatient(1).size());
     }
-
-    @Test
-    void findById() {
-        assertEquals(Type.SURGERY, treatmentService.findById("5f15ff62ea98b74438da7bcd").getType());
-    }
-    @Test
-    void findById_idNotfound() {
-        assertThrows(IdNotFoundException.class, () -> treatmentService.findById("450"));
-    }
+    
 }

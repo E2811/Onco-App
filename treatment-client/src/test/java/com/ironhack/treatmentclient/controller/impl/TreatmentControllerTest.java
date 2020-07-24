@@ -54,14 +54,4 @@ class TreatmentControllerTest {
                 .andExpect(status().isOk());
     }
 
-    @Test
-    void findById() throws Exception {
-        this.mockMvc.perform(get("/treatment/5f15ff62ea98b74438da7bcd"))
-                .andExpect(status().isOk());
-    }
-    @Test
-    void findByIdNotFound() throws Exception {
-        this.mockMvc.perform(get("/treatment/23"))
-                .andExpect(status().isNotFound());
-    }
 }
