@@ -1,6 +1,6 @@
 insert into doctor (name, userID, email, specialty) values
-('Joana Cruz', 2,'joanaCruz@gmail.com','PEDIATRICIAN'),
-('Elisa Montalvo', 3, 'elisa@gmail.com','PEDIATRICIAN'),
-('Alvaro Fragoso', 4,'alvaroFrago@gmail.com','HAEMATOLOGIST'),
-('Evelyn Flores', 5, 'evelynFlores@gmail.com','GYNECOLOGY'),
-('George Yoo', 6, 'georgeyoo@gmail.com','ORTHOPEDIST');
+('Pedro Viudes', 2,'pedroViudes@gmail.com','PEDIATRICIAN'),
+('Gema Montalvo', 3, 'gema@gmail.com','PEDIATRICIAN'),
+('Ana Pelaez', 4,'anaPela@gmail.com','HAEMATOLOGIST'),
+('Gonzalo Collado', 5, 'gonzaloCollado@gmail.com','GYNECOLOGY'),
+('Sofia Hernandez', 6, 'sofiaHernandez@gmail.com','ORTHOPEDIST');
