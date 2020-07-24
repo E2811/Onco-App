@@ -23,7 +23,7 @@ public class TreatmentService {
         return treatmentRepository.findByPatient(id);
     }
 
-    public Treatment findById(String id){
-        return treatmentRepository.findById(id).orElseThrow(()->new IdNotFoundException("Treatment not found"));
+    public void delete(Treatment treatment){
+        treatmentRepository.delete(treatment);
     }
 }

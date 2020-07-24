@@ -27,10 +27,10 @@ public class TreatmentController {
         return treatmentService.findByPatient(patientId);
     }
 
-    @GetMapping("/treatment/{id}")
+    @DeleteMapping("/treatment")
     @ResponseStatus(HttpStatus.OK)
-    public Treatment findById(@PathVariable String id) {
-        return treatmentService.findById(id);
+    public void findById(@RequestBody Treatment treatment) {
+        treatmentService.delete(treatment);
     }
 
 }
