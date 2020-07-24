@@ -4,9 +4,9 @@ Final Ironhack Project
 
 * [How to Works](#work)
 
-* [Tools](#tools)
+* [Functionalities](#functionalities)
 
-* [Documentation](#documentation)
+* [Tools](#tools)
 
 
 ## <a name= "goal"></a>Goal
@@ -34,9 +34,34 @@ This application, helps both patient and doctor to track and complete their eval
 Test our endpoints with swagger
 * [Heroku Edge Service Swagger](https://onco-app-edge-service.herokuapp.com//swagger-ui.html#/)
 
+Front page:
+* [Heroku front page](https://onco-app-front.herokuapp.com/)
+
 The only route permitted by all users is the sign-in route (auth-controller in Heroku Edge-Service). 
 Since JWT(JSON Web Tokens) authentication is used, a token would be generated. Introduce that token in the header request as: Bearer "token"
 
+## <a name= "functionalities"></a>Functionalities
+- Three roles and users : Admin, Doctor and Patient
+#### Admin 
+- Create new Patients and Doctors users.
+- Get exisiting Patients and doctors
+- Get some statistics 
+- Login: username and password = admin
+#### Patient
+- Get personal Information
+- Create new evaluation (VSG)
+- Get previous completed and not compledted evaluations and its results
+- Calendar to control its doctor appointments and add personal issues (Ex. recommended diet, future treatment appointments, etc...)
+- Login: username and password = username (you can also have access as an admin, create new user and then login)
+#### Doctor
+- Get Patient information (if its his/her patient)
+- Completed evaluations (VSG)
+- Get previous completed evaluations
+- Get some statistics
+- Create new treatment appointments
+- Create new Patients
+- Calendar (They could create events, if the title inserted is 'treatment' they would create a new treatment appointment associated to a patient.
+- Login: username and password = username (you can also have access as an admin, create new user and then login)
 ## <a name= "tools"></a>Tools
 - Heroku 
 - MongoAtlas
@@ -52,3 +77,7 @@ Since JWT(JSON Web Tokens) authentication is used, a token would be generated. I
 **Frontend**
 - Angular
 - Boostrap
+
+## <a name="link"></a>Link
+* [GitHub front repository](https://github.com/E2811/onco-app-front)
+* [OncoApp](https://onco-app-front.herokuapp.com/)
