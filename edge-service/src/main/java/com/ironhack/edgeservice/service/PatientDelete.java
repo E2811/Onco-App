@@ -22,6 +22,8 @@ public class PatientDelete {
     private ResultService resultService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private TreatmentService treatmentService;
 
     private static final Logger LOGGER = LogManager.getLogger(PatientDelete.class);
 
@@ -44,6 +46,7 @@ public class PatientDelete {
             LOGGER.info("delete patients evaluation");
             evaluationService.deletePatientEval(patientEvaluation.getId());
         });
+        treatmentService.findByPatient(patient.getId()).forEach(treatment -> treatmentService.delete(treatment));
         userService.delete(user.getId());
         patientService.delete(id);
         LOGGER.info("[EXIT] delete patient");

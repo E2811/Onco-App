@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -42,6 +43,7 @@ class TreatmentServiceTest {
         when(patientService.findById(1)).thenReturn(patient);
         when(treatmentClient.create(Mockito.any(Treatment.class))).thenAnswer(i -> i.getArguments()[0]);
         when(treatmentClient.findByPatient(1)).thenReturn(Arrays.asList(treatment));
+        doNothing().when(treatmentClient).delete(treatment);
     }
 
     @Test
@@ -62,5 +64,14 @@ class TreatmentServiceTest {
     @Test
     void findByPatientFake() {
         assertThrows(NullPointerException.class, ()-> treatmentService.findByPatientFake(1));
+    }
+
+    @Test
+    void delete(){
+        treatmentService.delete(treatment);
+    }
+    @Test
+    void deleteFake(){
+        assertThrows(NullPointerException.class, ()-> treatmentService.deleteFake(treatment));
     }
 }

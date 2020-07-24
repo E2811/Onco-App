@@ -27,5 +27,5 @@ class TreatmentServiceTest {
     void findByPatient() {
         assertEquals(2, treatmentService.findByPatient(1).size());
     }
-    
+
 }

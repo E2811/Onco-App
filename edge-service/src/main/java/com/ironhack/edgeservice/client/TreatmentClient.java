@@ -18,6 +18,6 @@ public interface TreatmentClient {
     @GetMapping("/treatment/byPatient/{patientId}")
     public List<Treatment> findByPatient(@PathVariable Integer patientId);
 
-    @GetMapping("/treatment/{id}")
-    public Treatment findById(@PathVariable String id);
+    @DeleteMapping("/treatment")
+    public void delete(@RequestBody Treatment treatment);
 }

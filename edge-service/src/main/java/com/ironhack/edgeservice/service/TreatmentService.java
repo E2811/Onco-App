@@ -46,5 +46,13 @@ public class TreatmentService {
         throw new NullPointerException("Treatment service is down. Try again Later");
     }
 
+    @HystrixCommand(fallbackMethod = "deleteFake")
+    public void delete(Treatment treatment){
+        treatmentClient.delete(treatment);
+    }
+    public void deleteFake(Treatment treatment){
+        throw new NullPointerException("Treatment service is down. Try again Later");
+    }
+
 
 }

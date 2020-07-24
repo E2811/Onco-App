@@ -2,10 +2,7 @@ package com.ironhack.edgeservice.service;
 
 import com.ironhack.edgeservice.controller.dto.PatientMV;
 import com.ironhack.edgeservice.enums.*;
-import com.ironhack.edgeservice.model.DoctorEvaluation;
-import com.ironhack.edgeservice.model.PatientEvaluation;
-import com.ironhack.edgeservice.model.Result;
-import com.ironhack.edgeservice.model.User;
+import com.ironhack.edgeservice.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +29,12 @@ class PatientDeleteTest {
     private UserService userService;
     @Autowired
     private PatientDelete patientDelete;
+    @MockBean
+    private TreatmentService treatmentService;
     private PatientMV patientMV;
     private DoctorEvaluation doctorEvaluation;
     private PatientEvaluation patientEvaluation;
+    private Treatment treatment;
 
     @BeforeEach
     void setUp() {
@@ -43,16 +43,19 @@ class PatientDeleteTest {
         doctorEvaluation = new DoctorEvaluation(Metabolic.MODERATE, Category.B, patientEvaluation);
         patientEvaluation = new PatientEvaluation(68, Intake.LESSER,Symptoms.MOUTH_SORES,Activity.RESTRICTED ,1);
         patientEvaluation.setId(1);
+        treatment = new Treatment(Type.INMUNOTHERAPY, LocalDate.now(), 1);
         Result result = new Result(60,50,2,2000,1);
         when(patientService.findById(1)).thenReturn(patientMV);
         when(userService.findUserByUsername("manuelPerez")).thenReturn(user);
         when(evaluationService.findByPatient("manuelPerez")).thenReturn(Arrays.asList(patientEvaluation));
         when(evaluationService.findByPatientEval(1)).thenReturn(doctorEvaluation);
         when(resultService.findByEvaluation(1)).thenReturn(result);
+        when(treatmentService.findByPatient(1)).thenReturn(Arrays.asList(treatment));
         doNothing().when(evaluationService).deleteDoctorEval(1);
         doNothing().when(evaluationService).deletePatientEval(1);
         doNothing().when(userService).delete(1);
         doNothing().when(patientService).delete(1);
+        doNothing().when(treatmentService).delete(treatment);
     }
 
     @Test

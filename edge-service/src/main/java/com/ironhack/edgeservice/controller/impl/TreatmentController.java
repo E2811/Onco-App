@@ -36,4 +36,5 @@ public class TreatmentController {
     public List<Treatment> findByPatient(@PathVariable Integer id) {
         return treatmentService.findByPatient(id);
     }
+
 }
