@@ -40,6 +40,7 @@ Since JWT(JSON Web Tokens) authentication is used, a token would be generated. I
 ## <a name= "tools"></a>Tools
 - Heroku 
 - MongoAtlas
+
 **Backend**
 - Spring Boot Dependencies (Spring Boot DevTools, Spring Data JPA, Spring Web)
 - Netflix OSS (Eureka, Ribbon, Hystrix)
