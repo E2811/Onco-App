@@ -23,6 +23,7 @@ public class TreatmentDto {
         this.patient = patient;
     }
 
+
     public Type getType() {
         return type;
     }

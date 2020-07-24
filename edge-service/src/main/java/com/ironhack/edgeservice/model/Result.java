@@ -30,6 +30,17 @@ public class Result {
         this.id = id;
     }
 
+    public double getIMC() {
+        return IMC;
+    }
+
+    public void setIMC(double IMC) {
+        this.IMC = IMC;
+    }
+
+    public Integer getEvaluation() {
+        return evaluation;
+    }
 
     public double getBodySurface() {
         return bodySurface;

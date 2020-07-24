@@ -59,6 +59,25 @@ public class EvaluationMV {
         return ecog;
     }
 
+    public double getWeight() {
+        return weight;
+    }
+
+    public Intake getIntake() {
+        return intake;
+    }
+
+    public Metabolic getMetabolic() {
+        return metabolic;
+    }
+
+    public LocalDate getReview() {
+        return review;
+    }
+
+    public boolean isEvaluated() {
+        return evaluated;
+    }
 
     public Category getCategory() {
         return category;

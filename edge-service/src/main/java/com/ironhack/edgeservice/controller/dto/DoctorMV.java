@@ -45,6 +45,9 @@ public class DoctorMV {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
     public Specialty getSpecialty() {
         return specialty;

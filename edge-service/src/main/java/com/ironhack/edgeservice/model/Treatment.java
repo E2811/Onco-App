@@ -26,6 +26,10 @@ public class Treatment {
         this.patient = patient;
     }
 
+    public LocalDate getRevisionDate() {
+        return revisionDate;
+    }
+
     public String getId() {
         return id;
     }
